@@ -25,5 +25,4 @@ public class JWTUtils {
                 .build();
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
-
 }

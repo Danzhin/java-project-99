@@ -26,36 +26,36 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO create(@Valid @RequestBody UserCreateDTO userData) {
-        return service.create(userData);
+        return userService.create(userData);
     }
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<UserDTO> readAll() {
-        return service.readAll();
+        return userService.readAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserDTO readById(@PathVariable Long id) {
-        return service.readById(id);
+        return userService.readById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserDTO update(@RequestBody @Valid UserUpdateDTO userData, @PathVariable Long id) {
-        return service.update(userData, id);
+        return userService.update(userData, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        service.delete(id);
+        userService.delete(id);
     }
 
 }

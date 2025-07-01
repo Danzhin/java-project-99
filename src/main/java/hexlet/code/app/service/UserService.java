@@ -16,38 +16,38 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserMapper postMapper;
+    private UserMapper userMapper;
 
     public UserDTO create(UserCreateDTO userData) {
-        var user = postMapper.map(userData);
-        repository.save(user);
-        return postMapper.map(user);
+        var user = userMapper.map(userData);
+        userRepository.save(user);
+        return userMapper.map(user);
     }
 
     public List<UserDTO> readAll() {
-        var users = repository.findAll();
-        return users.stream().map(postMapper::map).toList();
+        var users = userRepository.findAll();
+        return users.stream().map(userMapper::map).toList();
     }
 
     public UserDTO readById(Long id) {
-        var user = repository.findById(id)
+        var user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not Found: " + id));
-        return postMapper.map(user);
+        return userMapper.map(user);
     }
 
     public UserDTO update(UserUpdateDTO userData, Long id) {
-        var user = repository.findById(id)
+        var user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not Found" + id));
-        postMapper.update(userData, user);
-        repository.save(user);
-        return postMapper.map(user);
+        userMapper.update(userData, user);
+        userRepository.save(user);
+        return userMapper.map(user);
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
 }

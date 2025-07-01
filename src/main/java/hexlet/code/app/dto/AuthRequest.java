@@ -3,8 +3,8 @@ package hexlet.code.app.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class AuthRequest {
     private String username;
     private String password;
