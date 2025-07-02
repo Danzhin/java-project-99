@@ -11,13 +11,12 @@ import lombok.Setter;
 @Setter
 public class UserCreateDTO {
 
-    private String firstName;
-
-    private String lastName;
-
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     private String email;
+
+    private String firstName;
+    private String lastName;
 
     @NotBlank(message = "Password is required")
     @Size(min = 3, message = "Password must be at least 3 characters long")

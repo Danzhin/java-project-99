@@ -21,8 +21,8 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public UserDTO create(UserCreateDTO userData) {
-        var user = userMapper.map(userData);
+    public UserDTO create(UserCreateDTO dto) {
+        var user = userMapper.map(dto);
         userRepository.save(user);
         return userMapper.map(user);
     }
@@ -38,10 +38,10 @@ public class UserService {
         return userMapper.map(user);
     }
 
-    public UserDTO update(UserUpdateDTO userData, Long id) {
+    public UserDTO update(Long id, UserUpdateDTO dto) {
         var user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not Found" + id));
-        userMapper.update(userData, user);
+        userMapper.update(dto, user);
         userRepository.save(user);
         return userMapper.map(user);
     }

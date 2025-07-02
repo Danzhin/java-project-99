@@ -7,22 +7,19 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import org.openapitools.jackson.nullable.JsonNullable;
-
 @Getter
 @Setter
 public class UserUpdateDTO {
 
-    private JsonNullable<String> firstName;
-
-    private JsonNullable<String> lastName;
-
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
-    private JsonNullable<String> email;
+    private String email;
+
+    private String firstName;
+    private String lastName;
 
     @NotBlank(message = "Password is required")
     @Size(min = 3, message = "Password must be at least 3 characters long")
-    private JsonNullable<String> password;
+    private String password;
 
 }
